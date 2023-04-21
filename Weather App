@@ -1,0 +1,13 @@
+const apiKey = "YOUR_API_KEY";
+const city = "New York";
+
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+  .then(response => response.json())
+  .then(data => {
+    const weather = data.weather[0].main;
+    const temperature = data.main.temp;
+    console.log(`The weather in ${city} is ${weather} with a temperature of ${temperature} Kelvin.`);
+  })
+  .catch(error => {
+    console.error(error);
+  });
